@@ -1,12 +1,12 @@
 require 'test/unit'
-require './part2'
+require_relative './part2'
 
 module Day4
   class Part2Test < Test::Unit::TestCase
 
     def test_solve
 
-      input = File.read('./input.txt')
+      input = File.read(File.expand_path('../input.txt', __FILE__))
       assert_equal 548, Part2.new.solve(input)
     end
   end

@@ -1,5 +1,5 @@
 require 'test/unit'
-require './part1'
+require_relative './part1'
 
 module Day5
   class Part1Test < Test::Unit::TestCase
