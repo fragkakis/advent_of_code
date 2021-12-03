@@ -1,4 +1,4 @@
-module Day1
+module Day2
   class Part1
 
     def solve(input)
