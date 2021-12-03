@@ -24,21 +24,21 @@ module Day3
     end
 
     def narrow_down_with_most_common(report_lines, position)
-      bits = report_lines.map{|rl| rl[position]}
-      bit_occurrences = bits.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
+      bits = report_lines.map { |rl| rl[position] }
+      bit_occurrences = bits.inject(Hash.new(0)) { |h, v| h[v] += 1; h }
 
       filter_bit = if bit_occurrences["0"] == bit_occurrences["1"]
-        "1"
-      else
-        bit_occurrences.max_by(&:last).first
-      end
+                     "1"
+                   else
+                     bit_occurrences.max_by(&:last).first
+                   end
 
-      report_lines.select{|rl| rl[position] == filter_bit}
+      report_lines.select { |rl| rl[position] == filter_bit }
     end
 
     def narrow_down_with_least_common(report_lines, position)
-      bits = report_lines.map{|rl| rl[position]}
-      bit_occurrences = bits.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
+      bits = report_lines.map { |rl| rl[position] }
+      bit_occurrences = bits.inject(Hash.new(0)) { |h, v| h[v] += 1; h }
 
       filter_bit = if bit_occurrences["0"] == bit_occurrences["1"]
                      "0"
@@ -46,7 +46,7 @@ module Day3
                      bit_occurrences.min_by(&:last).first
                    end
 
-      report_lines.select{|rl| rl[position] == filter_bit}
+      report_lines.select { |rl| rl[position] == filter_bit }
     end
   end
 end

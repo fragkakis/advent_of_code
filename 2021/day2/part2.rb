@@ -5,7 +5,7 @@ module Day2
       horizontal_position = 0
       depth = 0
       aim = 0
-      instructions = input.split("\n").map{ |line| line.split(" ")}
+      instructions = input.split("\n").map { |line| line.split(" ") }
 
       instructions.each do |instruction, x|
         case instruction

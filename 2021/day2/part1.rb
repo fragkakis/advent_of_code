@@ -4,7 +4,7 @@ module Day2
     def solve(input)
       horizintal_position = 0
       depth = 0
-      instructions = input.split("\n").map{ |line| line.split(" ")}
+      instructions = input.split("\n").map { |line| line.split(" ") }
 
       instructions.each do |instruction, x|
         case instruction

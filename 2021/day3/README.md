@@ -2,43 +2,43 @@
 
 The submarine has been making some odd creaking noises, so you ask it to produce a diagnostic report just in case.
 
-The diagnostic report (your puzzle input) consists of a list of binary numbers which, when decoded properly, can tell you many useful things about the conditions of the submarine. The first parameter to check is the power consumption.
+The diagnostic report (your puzzle input) consists of a list of binary numbers which, when decoded properly, can tell
+you many useful things about the conditions of the submarine. The first parameter to check is the power consumption.
 
-You need to use the binary numbers in the diagnostic report to generate two new binary numbers (called the gamma rate and the epsilon rate). The power consumption can then be found by multiplying the gamma rate by the epsilon rate.
+You need to use the binary numbers in the diagnostic report to generate two new binary numbers (called the gamma rate
+and the epsilon rate). The power consumption can then be found by multiplying the gamma rate by the epsilon rate.
 
-Each bit in the gamma rate can be determined by finding the most common bit in the corresponding position of all numbers in the diagnostic report. For example, given the following diagnostic report:
+Each bit in the gamma rate can be determined by finding the most common bit in the corresponding position of all numbers
+in the diagnostic report. For example, given the following diagnostic report:
 
-00100
-11110
-10110
-10111
-10101
-01111
-00111
-11100
-10000
-11001
-00010
-01010
+00100 11110 10110 10111 10101 01111 00111 11100 10000 11001 00010 01010
 
-Considering only the first bit of each number, there are five 0 bits and seven 1 bits. Since the most common bit is 1, the first bit of the gamma rate is 1.
+Considering only the first bit of each number, there are five 0 bits and seven 1 bits. Since the most common bit is 1,
+the first bit of the gamma rate is 1.
 
 The most common second bit of the numbers in the diagnostic report is 0, so the second bit of the gamma rate is 0.
 
-The most common value of the third, fourth, and fifth bits are 1, 1, and 0, respectively, and so the final three bits of the gamma rate are 110.
+The most common value of the third, fourth, and fifth bits are 1, 1, and 0, respectively, and so the final three bits of
+the gamma rate are 110.
 
 So, the gamma rate is the binary number 10110, or 22 in decimal.
 
-The epsilon rate is calculated in a similar way; rather than use the most common bit, the least common bit from each position is used. So, the epsilon rate is 01001, or 9 in decimal. Multiplying the gamma rate (22) by the epsilon rate (9) produces the power consumption, 198.
+The epsilon rate is calculated in a similar way; rather than use the most common bit, the least common bit from each
+position is used. So, the epsilon rate is 01001, or 9 in decimal. Multiplying the gamma rate (22) by the epsilon rate (
+9) produces the power consumption, 198.
 
-Use the binary numbers in your diagnostic report to calculate the gamma rate and epsilon rate, then multiply them together. What is the power consumption of the submarine? (Be sure to represent your answer in decimal, not binary.)
+Use the binary numbers in your diagnostic report to calculate the gamma rate and epsilon rate, then multiply them
+together. What is the power consumption of the submarine? (Be sure to represent your answer in decimal, not binary.)
 
-Your puzzle answer was 4139586.
---- Part Two ---
+Your puzzle answer was 4139586. --- Part Two ---
 
-Next, you should verify the life support rating, which can be determined by multiplying the oxygen generator rating by the CO2 scrubber rating.
+Next, you should verify the life support rating, which can be determined by multiplying the oxygen generator rating by
+the CO2 scrubber rating.
 
-Both the oxygen generator rating and the CO2 scrubber rating are values that can be found in your diagnostic report - finding them is the tricky part. Both values are located using a similar process that involves filtering out values until only one remains. Before searching for either rating value, start with the full list of binary numbers from your diagnostic report and consider just the first bit of those numbers. Then:
+Both the oxygen generator rating and the CO2 scrubber rating are values that can be found in your diagnostic report -
+finding them is the tricky part. Both values are located using a similar process that involves filtering out values
+until only one remains. Before searching for either rating value, start with the full list of binary numbers from your
+diagnostic report and consider just the first bit of those numbers. Then:
 
     Keep only numbers selected by the bit criteria for the type of rating value for which you are searching. Discard numbers which do not match the bit criteria.
     If you only have one number left, stop; this is the rating value for which you are searching.
@@ -65,6 +65,9 @@ Then, to determine the CO2 scrubber rating value from the same example above:
     In the third position, there are an equal number of 0 bits and 1 bits (one each). So, to find the CO2 scrubber rating, keep the number with a 0 in that position: 01010.
     As there is only one number left, stop; the CO2 scrubber rating is 01010, or 10 in decimal.
 
-Finally, to find the life support rating, multiply the oxygen generator rating (23) by the CO2 scrubber rating (10) to get 230.
+Finally, to find the life support rating, multiply the oxygen generator rating (23) by the CO2 scrubber rating (10) to
+get 230.
 
-Use the binary numbers in your diagnostic report to calculate the oxygen generator rating and CO2 scrubber rating, then multiply them together. What is the life support rating of the submarine? (Be sure to represent your answer in decimal, not binary.)
+Use the binary numbers in your diagnostic report to calculate the oxygen generator rating and CO2 scrubber rating, then
+multiply them together. What is the life support rating of the submarine? (Be sure to represent your answer in decimal,
+not binary.)
