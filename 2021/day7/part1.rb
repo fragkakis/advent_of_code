@@ -2,22 +2,20 @@ module Day6
   class Part1
 
     def solve(input)
-      ages = input.split(",").map(&:to_i)
+      positions = input.split(",").map(&:to_i)
 
-      80.times do |i|
-        new_lanternfish_count = 0
-        new_ages = ages.map do |age|
-          case age
-          when 0
-            new_lanternfish_count += 1
-            6
-          else
-            age-1
-          end
-        end
-        ages = new_ages + [8] * new_lanternfish_count
+      min_x = positions.min
+      max_x = positions.max
+
+      costs = []
+      (min_x..max_x).each do |x|
+        costs << calculate_cost_for(x, positions)
       end
-      ages.size
+      costs.min
+    end
+
+    def calculate_cost_for(x, positions)
+      positions.map { |crab_x| (crab_x - x).abs }.sum
     end
   end
 end

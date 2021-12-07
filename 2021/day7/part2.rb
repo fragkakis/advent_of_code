@@ -1,24 +1,25 @@
-module Day6
+module Day7
   class Part2
 
     def solve(input)
-      age_groups = input.split(",").map(&:to_i).tally
+      positions = input.split(",").map(&:to_i)
 
-      256.times do
-        new_age_groups = {}
-        age_groups.each do |age, count|
-          case age
-          when 0
-            new_age_groups[6] = (new_age_groups[6] || 0 ) + count
-            new_age_groups[8] = (new_age_groups[8] || 0 ) + count
-          else
-            new_age_groups[age-1] = (new_age_groups[age-1] || 0) + count
-          end
-        end
-        age_groups = new_age_groups
+      min_x = positions.min
+      max_x = positions.max
+
+      costs = []
+      (min_x..max_x).each do |x|
+        costs << calculate_cost_for(x, positions)
       end
+      costs.min
+    end
 
-      age_groups.values.sum
+    def calculate_cost_for(x, positions)
+      positions
+        .map { |crab_x| (crab_x - x).abs }
+        .select(&:positive?)
+        .map { |distance| (1..distance).sum }
+        .sum
     end
   end
 end
