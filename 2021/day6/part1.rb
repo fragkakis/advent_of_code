@@ -1,6 +1,5 @@
 module Day7
   class Part1
-
     def solve(input)
       ages = input.split(",").map(&:to_i)
 

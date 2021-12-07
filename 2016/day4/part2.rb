@@ -1,7 +1,6 @@
 module Day4
   class Part2
-
-    ALPHABET = ('a'..'z').to_a
+    ALPHABET = ("a".."z").to_a
 
     def solve(input)
       rooms = input.split("\n")
@@ -14,11 +13,11 @@ module Day4
       letters, sector, top_letters = extract_info(room)
       return unless valid?(letters, top_letters)
       shifted = shift(letters, sector)
-      return true if shifted.include?('north') && shifted.include?('pole')
+      return true if shifted.include?("north") && shifted.include?("pole")
     end
 
     def shift(letters, positions)
-      letters.split('').map { |l| ALPHABET[(ALPHABET.index(l) + positions) % ALPHABET.size] }.join
+      letters.chars.map { |l| ALPHABET[(ALPHABET.index(l) + positions) % ALPHABET.size] }.join
     end
 
     def extract_info(room)
@@ -32,7 +31,7 @@ module Day4
 
     def valid?(letters, top_letters)
       counts = Hash.new 0
-      letters.gsub!('-', '').split('').each { |l| counts[l] += 1 }
+      letters.delete!("-").chars.each { |l| counts[l] += 1 }
       top_letters == counts.sort_by { |letter, occurrences| [-occurrences, letter] }.first(5).map { |e| e.first }.join
     end
   end

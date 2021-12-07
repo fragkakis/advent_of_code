@@ -1,20 +1,19 @@
 module Day4
   class Part2
-
     def solve(input)
       input_lines = input.split("\n")
       numbers = input_lines.first.split(",").map(&:to_i)
 
       i = 0
       boards = {}
-      while (true)
+      loop do
         break if input_lines[2 + (i * 6) + 0].nil?
         board = []
-        board << input_lines[2 + (i * 6) + 0].strip.gsub(/\s+/, ' ').split(" ").map(&:to_i)
-        board << input_lines[2 + (i * 6) + 1].strip.gsub(/\s+/, ' ').split(" ").map(&:to_i)
-        board << input_lines[2 + (i * 6) + 2].strip.gsub(/\s+/, ' ').split(" ").map(&:to_i)
-        board << input_lines[2 + (i * 6) + 3].strip.gsub(/\s+/, ' ').split(" ").map(&:to_i)
-        board << input_lines[2 + (i * 6) + 4].strip.gsub(/\s+/, ' ').split(" ").map(&:to_i)
+        board << input_lines[2 + (i * 6) + 0].strip.gsub(/\s+/, " ").split(" ").map(&:to_i)
+        board << input_lines[2 + (i * 6) + 1].strip.gsub(/\s+/, " ").split(" ").map(&:to_i)
+        board << input_lines[2 + (i * 6) + 2].strip.gsub(/\s+/, " ").split(" ").map(&:to_i)
+        board << input_lines[2 + (i * 6) + 3].strip.gsub(/\s+/, " ").split(" ").map(&:to_i)
+        board << input_lines[2 + (i * 6) + 4].strip.gsub(/\s+/, " ").split(" ").map(&:to_i)
         boards[i] = board
         i += 1
       end
@@ -25,8 +24,8 @@ module Day4
         drawn_numbers << n
 
         winning_board_ids += boards.keys
-                                   .select { |id| !winning_board_ids.include?(id) }
-                                   .select { |id| board_wins?(boards[id], drawn_numbers) }
+          .select { |id| !winning_board_ids.include?(id) }
+          .select { |id| board_wins?(boards[id], drawn_numbers) }
 
         break if boards.size == winning_board_ids.size
       end

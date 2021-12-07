@@ -1,6 +1,5 @@
 module Day7
   class Part2
-
     def solve(input)
       positions = input.split(",").map(&:to_i)
 

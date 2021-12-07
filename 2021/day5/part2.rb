@@ -1,6 +1,5 @@
 module Day5
   class Part2
-
     def solve(input)
       input_lines = input.split("\n")
       vents = []
@@ -53,7 +52,7 @@ module Day5
         end
       end
 
-      diagram.values.map(&:values).flatten.select { |value| value > 1 }.size
+      diagram.values.map(&:values).flatten.count { |value| value > 1 }
     end
 
     def vertical?(vent)

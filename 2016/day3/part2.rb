@@ -1,6 +1,5 @@
 module Day3
   class Part2
-
     def solve(input)
       lines = input.split("\n")
       valid_count = 0
@@ -17,7 +16,7 @@ module Day3
     end
 
     def line_to_edges(line)
-      line.split(' ').map(&:to_i)
+      line.split(" ").map(&:to_i)
     end
 
     def valid?(sides)

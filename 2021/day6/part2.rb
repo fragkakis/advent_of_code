@@ -1,6 +1,5 @@
 module Day6
   class Part2
-
     def solve(input)
       age_groups = input.split(",").map(&:to_i).tally
 

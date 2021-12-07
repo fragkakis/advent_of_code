@@ -1,6 +1,5 @@
 module Day1
   class Part2
-
     def solve(input)
       counter = 0
       measurements = input.split("\n").map(&:to_i)

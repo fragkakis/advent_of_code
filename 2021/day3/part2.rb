@@ -1,6 +1,5 @@
 module Day3
   class Part2
-
     def solve(input)
       report_lines = input.split("\n")
 
@@ -25,26 +24,30 @@ module Day3
 
     def narrow_down_with_most_common(report_lines, position)
       bits = report_lines.map { |rl| rl[position] }
-      bit_occurrences = bits.inject(Hash.new(0)) { |h, v| h[v] += 1; h }
+      bit_occurrences = bits.each_with_object(Hash.new(0)) { |v, h|
+        h[v] += 1
+      }
 
       filter_bit = if bit_occurrences["0"] == bit_occurrences["1"]
-                     "1"
-                   else
-                     bit_occurrences.max_by(&:last).first
-                   end
+        "1"
+      else
+        bit_occurrences.max_by(&:last).first
+      end
 
       report_lines.select { |rl| rl[position] == filter_bit }
     end
 
     def narrow_down_with_least_common(report_lines, position)
       bits = report_lines.map { |rl| rl[position] }
-      bit_occurrences = bits.inject(Hash.new(0)) { |h, v| h[v] += 1; h }
+      bit_occurrences = bits.each_with_object(Hash.new(0)) { |v, h|
+        h[v] += 1
+      }
 
       filter_bit = if bit_occurrences["0"] == bit_occurrences["1"]
-                     "0"
-                   else
-                     bit_occurrences.min_by(&:last).first
-                   end
+        "0"
+      else
+        bit_occurrences.min_by(&:last).first
+      end
 
       report_lines.select { |rl| rl[position] == filter_bit }
     end
