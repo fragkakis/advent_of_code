@@ -9,7 +9,7 @@ module Day1
       @state = initial_state
       moves = input.split(', ')
       catch :found do
-        moves.inject(state){|state, m| move(state, m)}
+        moves.inject(state) { |state, m| move(state, m) }
       end
 
       state[:visited_coordinates].last[0].abs + state[:visited_coordinates].last[1].abs
@@ -18,22 +18,23 @@ module Day1
     def move(state, move)
       state[:direction] = new_direction(state[:direction], move)
       case state[:direction]
-        when 'N'
-          new_vertical_offset = state[:vertical_offset] + steps(move)
-          (state[:vertical_offset]+1..new_vertical_offset).to_a.each{ |o| record_visit(state[:visited_coordinates], [state[:horizontal_offset], o])}
-          state[:vertical_offset] = new_vertical_offset
-        when 'S'
-          new_vertical_offset = state[:vertical_offset] - steps(move)
-          (new_vertical_offset...state[:vertical_offset]).to_a.reverse.each{ |o| record_visit(state[:visited_coordinates], [state[:horizontal_offset], o])}
-          state[:vertical_offset] = new_vertical_offset
-        when 'E'
-          new_horizontal_offset = state[:horizontal_offset] + steps(move)
-          (state[:horizontal_offset]+1..new_horizontal_offset).to_a.each{ |o| record_visit(state[:visited_coordinates], [o, state[:vertical_offset]])}
-          state[:horizontal_offset] = new_horizontal_offset
-        else # 'W'
-          new_horizontal_offset = state[:horizontal_offset] - steps(move)
-          (new_horizontal_offset...state[:horizontal_offset]).to_a.reverse.each{ |o| record_visit(state[:visited_coordinates], [o, state[:vertical_offset]])}
-          state[:horizontal_offset] = new_horizontal_offset
+      when 'N'
+        new_vertical_offset = state[:vertical_offset] + steps(move)
+        (state[:vertical_offset] + 1..new_vertical_offset).to_a.each { |o| record_visit(state[:visited_coordinates], [state[:horizontal_offset], o]) }
+        state[:vertical_offset] = new_vertical_offset
+      when 'S'
+        new_vertical_offset = state[:vertical_offset] - steps(move)
+        (new_vertical_offset...state[:vertical_offset]).to_a.reverse.each { |o| record_visit(state[:visited_coordinates], [state[:horizontal_offset], o]) }
+        state[:vertical_offset] = new_vertical_offset
+      when 'E'
+        new_horizontal_offset = state[:horizontal_offset] + steps(move)
+        (state[:horizontal_offset] + 1..new_horizontal_offset).to_a.each { |o| record_visit(state[:visited_coordinates], [o, state[:vertical_offset]]) }
+        state[:horizontal_offset] = new_horizontal_offset
+      else
+        # 'W'
+        new_horizontal_offset = state[:horizontal_offset] - steps(move)
+        (new_horizontal_offset...state[:horizontal_offset]).to_a.reverse.each { |o| record_visit(state[:visited_coordinates], [o, state[:vertical_offset]]) }
+        state[:horizontal_offset] = new_horizontal_offset
       end
       state
     end
@@ -47,10 +48,10 @@ module Day1
 
     def initial_state
       {
-          horizontal_offset: 0,
-          vertical_offset: 0,
-          direction: 'N',
-          visited_coordinates: []
+        horizontal_offset: 0,
+        vertical_offset: 0,
+        direction: 'N',
+        visited_coordinates: []
       }
     end
 

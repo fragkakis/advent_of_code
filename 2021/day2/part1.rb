@@ -1,6 +1,5 @@
 module Day2
   class Part1
-
     def solve(input)
       horizintal_position = 0
       depth = 0

@@ -1,6 +1,5 @@
 module Day4
   class Part1
-
     def solve(input)
       rooms = input.split("\n")
       rooms.inject(0) do |sector_sum, room|
@@ -21,7 +20,7 @@ module Day4
 
     def valid?(letters, top_letters)
       counts = Hash.new 0
-      letters.gsub!('-', '').split('').each { |l| counts[l] += 1 }
+      letters.delete!("-").chars.each { |l| counts[l] += 1 }
       top_letters == counts.sort_by { |letter, occurrences| [-occurrences, letter] }.first(5).map { |e| e.first }.join
     end
   end

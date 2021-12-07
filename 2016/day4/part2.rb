@@ -5,7 +5,7 @@ module Day4
 
     def solve(input)
       rooms = input.split("\n")
-      north_pole_room = rooms.find{|room| north_pole?(room)}
+      north_pole_room = rooms.find { |room| north_pole?(room) }
       _, sector, _ = extract_info(north_pole_room)
       sector
     end

@@ -12,7 +12,7 @@ module Day7
             new_lanternfish_count += 1
             6
           else
-            age-1
+            age - 1
           end
         end
         ages = new_ages + [8] * new_lanternfish_count

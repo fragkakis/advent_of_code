@@ -9,10 +9,10 @@ module Day6
         age_groups.each do |age, count|
           case age
           when 0
-            new_age_groups[6] = (new_age_groups[6] || 0 ) + count
-            new_age_groups[8] = (new_age_groups[8] || 0 ) + count
+            new_age_groups[6] = (new_age_groups[6] || 0) + count
+            new_age_groups[8] = (new_age_groups[8] || 0) + count
           else
-            new_age_groups[age-1] = (new_age_groups[age-1] || 0) + count
+            new_age_groups[age - 1] = (new_age_groups[age - 1] || 0) + count
           end
         end
         age_groups = new_age_groups

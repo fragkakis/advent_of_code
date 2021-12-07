@@ -5,12 +5,12 @@ module Day5
       input_lines = input.split("\n")
       vents = []
       input_lines.each do |line|
-        vents << line.split(" -> ").map{|coords_str| coords_str.split(",").map(&:to_i)}
+        vents << line.split(" -> ").map { |coords_str| coords_str.split(",").map(&:to_i) }
       end
       vents
 
-      max_x = vents.map{|v| [v[0][0], v[1][0]]}.flatten.max
-      max_y = vents.map{|v| [v[0][1], v[1][1]]}.flatten.max
+      max_x = vents.map { |v| [v[0][0], v[1][0]] }.flatten.max
+      max_y = vents.map { |v| [v[0][1], v[1][1]] }.flatten.max
 
       diagram = {}
       (0..max_x).each do |x|
@@ -53,7 +53,7 @@ module Day5
         end
       end
 
-      diagram.values.map(&:values).flatten.select{|value| value > 1}.size
+      diagram.values.map(&:values).flatten.select { |value| value > 1 }.size
     end
 
     def vertical?(vent)
