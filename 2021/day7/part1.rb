@@ -1,4 +1,4 @@
-module Day6
+module Day7
   class Part1
     def solve(input)
       positions = input.split(",").map(&:to_i)
