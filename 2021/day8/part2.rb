@@ -47,25 +47,26 @@ module Day8
     end
 
     def convert_to_int(signal)
-      if signal.chars.sort == %w[a b c e f g]
+      case signal.chars.sort
+      when %w[a b c e f g]
         0
-      elsif signal.chars.sort == %w[c f]
+      when %w[c f]
         1
-      elsif signal.chars.sort == %w[a c d e g]
+      when %w[a c d e g]
         2
-      elsif signal.chars.sort == %w[a c d f g]
+      when %w[a c d f g]
         3
-      elsif signal.chars.sort == %w[b c d f]
+      when %w[b c d f]
         4
-      elsif signal.chars.sort == %w[a b d f g]
+      when %w[a b d f g]
         5
-      elsif signal.chars.sort == %w[a b d e f g]
+      when %w[a b d e f g]
         6
-      elsif signal.chars.sort == %w[a c f]
+      when %w[a c f]
         7
-      elsif signal.chars.sort == %w[a b c d e f g]
+      when %w[a b c d e f g]
         8
-      elsif signal.chars.sort == %w[a b c d f g]
+      when %w[a b c d f g]
         9
       end
     end
