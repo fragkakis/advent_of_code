@@ -49,7 +49,7 @@ module Day16
       @visited = []
       trace([0, 0], "right")
 
-      @visited.map(&:first).uniq.size
+      @visited.map{|v| v.split("-").first(2).join("-")}.uniq.size
     end
 
     def trace(position, direction)
@@ -59,7 +59,7 @@ module Day16
       while(q.any?)
         current_position, current_direction = q.shift
 
-        @visited << [current_position, current_direction]
+        @visited << [current_position[0], current_position[1], current_direction].join("-")
         content = map[current_position[0]][current_position[1]]
         new_directions = NEW_DIRECTIONS[current_direction][content]
         new_directions.each do |new_direction|
@@ -68,7 +68,7 @@ module Day16
           new_position = [current_position[0] + position_diff[0], current_position[1] + position_diff[1]]
 
           if position_exists?(new_position) &&
-            !@visited.include?([new_position, new_direction])
+            !@visited.include?([new_position[0], new_position[1], new_direction].join("-"))
             q << [new_position, new_direction]
           end
         end
